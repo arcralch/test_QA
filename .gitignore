@@ -1,0 +1,7 @@
+target/
+.gauge
+.settings
+.vscode
+logs/
+reports/
+tmp/
