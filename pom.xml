@@ -5,8 +5,40 @@
     <groupId>app</groupId>
     <artifactId>test_QA</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.url>https://sonar.hightech-corp.com</sonar.url>
+    </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.fluttercode.datafactory</groupId>
+            <artifactId>datafactory</artifactId>
+            <version>0.8</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.paulhammant</groupId>
+            <artifactId>ngwebdriver</artifactId>
+            <version>1.1.4</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.thoughtworks.gauge</groupId>
             <artifactId>gauge-java</artifactId>
@@ -14,15 +46,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.13.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -34,57 +66,182 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>3.7.0</version>
+            <version>3.7.1</version>
         </dependency>
-		<dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>22.0</version>
-        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
-            <version>1.7.28</version>
+            <version>1.7.25</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-			<groupId>com.jayway.jsonpath</groupId>
-			<artifactId>json-path</artifactId>
-			<version>2.4.0</version>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.4.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jtwig</groupId>
+            <artifactId>jtwig-core</artifactId>
+            <version>5.87.0.RELEASE</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.4</version>
 		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.4</version>
-		</dependency>
-		<dependency>
-			<groupId>com.paulhammant</groupId>
-			<artifactId>ngwebdriver</artifactId>
-			<version>1.1.4</version>
-			<scope>test</scope>
-		</dependency>
+
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901-1.jdbc4</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>8.10</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.github.ngeor</groupId>
+                            <artifactId>checkstyle-rules</artifactId>
+                            <version>1.1.0</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.6.0.1398</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+
+            <!--<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+                	<useSystemClassLoader>false</useSystemClassLoader>
+            	</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			-->
+            <!--
+            <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.6.0.1398</version>
+                    <executions>
+						<execution>
+						<phase>test</phase>
+							<goals>
+								<goal>sonar</goal>                            
+							</goals>
+							
+						</execution>
+                    </executions>
+            </plugin>
+            -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>PACKAGE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.5</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>com.thoughtworks.gauge.maven</groupId>
                 <artifactId>gauge-maven-plugin</artifactId>
-                <version>1.3.0</version>
+                <version>1.4.1</version>
                 <executions>
                     <execution>
                         <phase>test</phase>
                         <configuration>
                             <specsDir>specs</specsDir>
+                            <inParallel>false</inParallel>
+                            <nodes>4</nodes>
                         </configuration>
                         <goals>
                             <goal>execute</goal>
@@ -92,12 +249,131 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M1</version>
-            </plugin>
+
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.1</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
+    <profiles>
+        <!--
+        <profile>
+			<id>analyze-test-classes</id>
+			<properties>
+				<sonar.sources>src/test/java</sonar.sources>
+				<sonar.tests></sonar.tests>
+				<sonar.projectName>${project.name}-tests</sonar.projectName>
+				<sonar.projectKey>${project.groupId}:${project.artifactId}-tests</sonar.projectKey>
+			</properties>
+		</profile>
+		
+            <profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+                <sonar.login>ecortez</sonar.login>
+                <sonar.password>htc2019</sonar.password>				
+				<sonar.host.url>${sonar.url}</sonar.host.url>
+				<sonar.verbose>false</sonar.verbose>
+				<sonar.showProfiling>true</sonar.showProfiling>
+				<sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
+                
+				<sonar.coverage.jacoco.xmlReportsPath>target/coverage-reports/jacoco-ut.exec</sonar.coverage.jacoco.xmlReportsPath>
+				<sonar.exclusions>**/generated-sources/**, **/util/**, **/common/**,
+					**/constants/**, **/target/**</sonar.exclusions>
+			</properties>
+        </profile>
+        -->
+        <profile>
+            <id>jacoco</id>
+            <activation>
+                <property>
+                    <name>env.TRAVIS</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <!--
+        For the Travis profile:
+        - we want to break the build on any checkstyle violation.
+        - we want to be able to publish coverage report to coveralls.
+        -->
+        <profile>
+            <id>travis</id>
+            <activation>
+                <property>
+                    <name>env.TRAVIS</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>checkstyle</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.eluder.coveralls</groupId>
+                        <artifactId>coveralls-maven-plugin</artifactId>
+                        <version>4.3.0</version>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
