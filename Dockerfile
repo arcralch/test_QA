@@ -4,7 +4,7 @@ ARG localuid=101
 WORKDIR /test_QA/
 EXPOSE 9001
 RUN apt-get update
-ENV PUSH_GATE="0.0.0.0:9091"
+ENV PUSH_GATE="192.168.0.12:9091"
 ENV localuid=$arglocaluid
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
