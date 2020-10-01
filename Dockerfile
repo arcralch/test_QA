@@ -1,4 +1,4 @@
-FROM maven3.6.0-jdk-10
+FROM maven:3.6.0-jdk-10
 
 ARG localuid=101
 WORKDIR /test_QA/
