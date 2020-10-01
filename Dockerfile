@@ -19,7 +19,7 @@ COPY ./bin/ /test_QA/bin/
 
 #Tasker will make sure it runs every 5 minutes
 RUN chmod a+x /test_QA/bin/*
-RUN git clone https://rlopez:angel.07@git.hightech-corp.com/rlopez/test_QA.git
+RUN git clone https://arcralch:ralch.07@github.com/arcralch/test_QA.git
 
 RUN useradd -ms /bin/bash ngnix
 USER ngnix
