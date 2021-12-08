@@ -25,7 +25,7 @@ public class AppPage extends AngularPage {
 	private static final int VALUE = 1;
     private static final By LOGOAPP = By.xpath("//div[text()='Welcome Back']");
     private static final By LOGINAPP = By.xpath("//div[text()='Sign In']");
-    private static final By USERNAME = By.xpath("//button[text()='htcqa']");
+    private static final By USERNAME = By.xpath("//span[text()='htcqa']");
     private static final By LOGOUT = By.id("logoutButton");
     private static final Map<Tab, By> tabs = new EnumMap<>(Tab.class);
     private static final By TABEXPLORE = By.xpath("//a[text()='Explore']");

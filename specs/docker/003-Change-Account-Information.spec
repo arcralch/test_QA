@@ -1,14 +1,14 @@
 #Account Information
-*Load APP page
+*Go to url APP
 
 ##Change Account Information
-*Login in APP
+*Login APP
     |FIELD         | Value         |
     |--------------|---------------|
     |nw_username   |htcqa          |
     |nw_password   |Hightech2020   |
-*Select Submenu of UserAccount in "Account Settings"
-*Change information Account Setting
+*Select Submenu of UserAccount "Account Settings"
+*Change Account Setting
     |FIELD         | Value         |
     |--------------|---------------|
     |full_name     |Hightech       |
@@ -18,4 +18,4 @@
 ____________________
 Teardown steps
 
-*Logout in APP
+*Logout APP

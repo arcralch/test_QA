@@ -13,13 +13,13 @@ public class AppUser extends AngularPage {
 
     private static final int FIELD = 0;
     private static final int VALUE = 1;
-    private static final By USERNAME = By.xpath("//button[text()='htcqa']");
+    private static final By USERNAME = By.xpath("//span[text()='htcqa']");
     private static final By TABPROFILE = By.xpath("//li[text()='My Profile']");
     private static final By TABCONTENT = By.xpath("//li[text()='My Content']");
     private static final By TABACCOUNTSETTING = By.xpath("//li[text()='Account Settings']");
     private static final By TABBILLING = By.xpath("//li[text()='Billing']");
     private static final By TXTFULLNAME = By.name("full_name");
-    private static final By BTNSAVE = By.xpath("//button[text()='Save']");
+    private static final By BTNSAVE = By.xpath("//span[text()='Save']");
 
     public AppUser(WebDriver driver) {
         super(driver);
