@@ -5,8 +5,8 @@
 *Login in APP
     |FIELD         | Value         |
     |--------------|---------------|
-    |nw_username   |htcqa          |
-    |nw_password   |Hightech2020   |
+    |username      |htcqa          |
+    |password      |Hightech2020   |
 *Select image repositorios of "ubuntu"
 
 ____________________

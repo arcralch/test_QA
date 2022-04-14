@@ -1,6 +1,8 @@
-package com.htc.ngt.lambda.qa.app;
+package com.docker.ngt.lambda.qa.app;
 
-import com.htc.ngt.lambda.qa.driver.Driver;
+import java.io.IOException;
+
+import com.docker.ngt.lambda.qa.driver.Driver;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
 
@@ -9,8 +11,8 @@ public class AppStep {
     private AppPage app;
 
     @Step("Go to url APP")
-    public void gotoUrlPage(){
-        this.app = new AppPage(Driver.getDriver(true), System.getenv("APP_URL"));
+    public void gotoUrlPage() throws IOException, Exception{
+        this.app = new AppPage(Driver.getDriver(true)).goToPage(System.getenv("APP_URL")).init();
     }
 
     @Step("Login APP <table>")
@@ -24,17 +26,17 @@ public class AppStep {
     }
 
     @Step("Select image repositorios <value>")
-    public void selectRepositorios(String value){
+    public void selectRepositorios(String value) throws Exception{
         this.app.getExploreMenu().getSearchRepositorios(value);
     }
 
     @Step("Select Submenu of UserAccount <value>")
-    public void selectSubMenuAccountUser(String value){
+    public void selectSubMenuAccountUser(String value) throws Exception{
         this.app.getUserMenu().getSelectionSubMenuUser(value);
     }
     
     @Step("Change Account Setting <dataTable>")
-    public void changeAccountUser(Table dataTable){
+    public void changeAccountUser(Table dataTable) throws Exception{
         this.app.getUserMenu().setAccountInformation(dataTable);
     }
 }

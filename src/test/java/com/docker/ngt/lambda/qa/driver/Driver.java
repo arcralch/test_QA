@@ -1,4 +1,4 @@
-package com.htc.ngt.lambda.qa.driver;
+package com.docker.ngt.lambda.qa.driver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -61,7 +61,7 @@ public class Driver {
 				webDriver.manage().deleteAllCookies();
 			}else{
 				final ChromeOptions chromeOptions = new ChromeOptions();
-				WebDriverManager.chromedriver().version(System.getenv("VERSION")).setup();
+				WebDriverManager.chromedriver().setup();
 				chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				chromeOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
 				boolean headless = Boolean.valueOf(System.getenv("HEADLESS"));

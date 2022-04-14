@@ -1,6 +1,6 @@
-package com.htc.ngt.lambda.qa.app.tabs;
+package com.docker.ngt.lambda.qa.app.tabs;
 
-import com.htc.ngt.lambda.qa.page.AngularPage;
+import com.docker.ngt.lambda.qa.page.AngularPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,12 +8,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class AppExplore extends AngularPage {
-    private static final By TXTSEARCH = By.xpath("//*[@placeholder='Search for great content (e.g., mysql)']");
-    private static final By TXTLINKTITLE = By.className("styles__productNameLine___2QJsS");
+    private static By TXTSEARCH;
+    private static By TXTLINKTITLE;
     private static final Integer TIME_WAIT = 5;
 
     public AppExplore(WebDriver driver) {
         super(driver);
+    }
+
+    public AppExplore init() throws Exception{
+        TXTSEARCH = createBy(System.getenv("BY_XPATH"), System.getenv("TXT_SEARCH"));
+        TXTLINKTITLE = createBy(System.getenv("BY_CLASSNAME"), System.getenv("TXT_LINKTITLE"));
+        return this;
     }
 
     public AppExplore getSearchRepositorios(String value){

@@ -1,4 +1,4 @@
-package com.htc.ngt.lambda.qa.util;
+package com.docker.ngt.lambda.qa.util;
 
 import java.util.Collection;
 

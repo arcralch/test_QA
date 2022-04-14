@@ -1,10 +1,10 @@
-package com.htc.ngt.lambda.qa.page;
+package com.docker.ngt.lambda.qa.page;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.htc.ngt.lambda.qa.util.SearchResult;
+import com.docker.ngt.lambda.qa.util.SearchResult;
 import com.paulhammant.ngwebdriver.ByAngular;
 import com.paulhammant.ngwebdriver.NgWebDriver;
 
