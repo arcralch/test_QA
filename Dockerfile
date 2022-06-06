@@ -7,8 +7,9 @@ EXPOSE 9001
 #ENV PUSH_GATE="192.168.0.12:9091"
 ENV localuid=$arglocaluid
 
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    jq curl git chromium-browser vim nano
+    jq curl git chromium vim nano
 
 RUN curl -Ssl https://downloads.gauge.org/stable | sed 's/latest/15176631/g' | sh -s -- --location=/usr/sbin/
 RUN gauge telemetry off
