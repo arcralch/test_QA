@@ -9,13 +9,20 @@ ENV localuid=$arglocaluid
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    jq curl git chromium vim nano
+    jq curl git chromium vim nano wget
+RUN apt-get update
+RUN apt-get -f install 
 
+#Install Gauge
 RUN curl -Ssl https://downloads.gauge.org/stable | sed 's/latest/15176631/g' | sh -s -- --location=/usr/sbin/
 RUN gauge telemetry off
 RUN gauge install java --version 0.7.1
 RUN gauge install json-report
 RUN gauge install html-report --version 4.0.6
+
+#Install Chrome
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
 COPY ./bin/ /test_QA/bin/
 
