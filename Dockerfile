@@ -8,7 +8,7 @@ EXPOSE 9001
 ENV localuid=$arglocaluid
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    jq curl git chromium vim nano
+    jq curl git chromium-browser vim nano
 
 RUN curl -Ssl https://downloads.gauge.org/stable | sed 's/latest/15176631/g' | sh -s -- --location=/usr/sbin/
 RUN gauge telemetry off
