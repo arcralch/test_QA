@@ -1,6 +1,6 @@
-package com.htc.ngt.lambda.qa.common;
+package com.docker.ngt.lambda.qa.common;
 
-import com.htc.ngt.lambda.qa.driver.Driver;
+import com.docker.ngt.lambda.qa.driver.Driver;
 import com.thoughtworks.gauge.screenshot.ICustomScreenshotGrabber;
 
 import org.openqa.selenium.OutputType;

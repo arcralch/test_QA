@@ -1,8 +1,8 @@
-package com.htc.ngt.lambda.qa.app.tabs;
+package com.docker.ngt.lambda.qa.app.tabs;
 
 import java.util.List;
 
-import com.htc.ngt.lambda.qa.page.AngularPage;
+import com.docker.ngt.lambda.qa.page.AngularPage;
 import com.thoughtworks.gauge.Table;
 
 import org.openqa.selenium.By;
@@ -13,16 +13,27 @@ public class AppUser extends AngularPage {
 
     private static final int FIELD = 0;
     private static final int VALUE = 1;
-    private static final By USERNAME = By.xpath("//span[text()='htcqa']");
-    private static final By TABPROFILE = By.xpath("//li[text()='My Profile']");
-    private static final By TABCONTENT = By.xpath("//li[text()='My Content']");
-    private static final By TABACCOUNTSETTING = By.xpath("//li[text()='Account Settings']");
-    private static final By TABBILLING = By.xpath("//li[text()='Billing']");
-    private static final By TXTFULLNAME = By.name("full_name");
-    private static final By BTNSAVE = By.xpath("//span[text()='Save']");
+    private static By USERNAME;
+    private static By TABPROFILE;
+    private static By TABCONTENT;
+    private static By TABACCOUNTSETTING;
+    private static By TABBILLING;
+    private static By TXTFULLNAME;
+    private static By BTNSAVE;
 
     public AppUser(WebDriver driver) {
         super(driver);
+    }
+
+    public AppUser init() throws Exception{
+        USERNAME = createBy(System.getenv("BY_XPATH"), System.getenv("LBL_USERNAME"));
+        TABPROFILE = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_PROFILE"));
+        TABCONTENT = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_CONTENT"));
+        TABACCOUNTSETTING = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_ACCOUNTSETTING"));
+        TABBILLING = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_BILLING"));
+        BTNSAVE = createBy(System.getenv("BY_XPATH"), System.getenv("BTN_SAVE"));
+        TXTFULLNAME = createBy(System.getenv("BY_NAME"), System.getenv("TXT_FULLNAME"));
+        return this;
     }
 
     public AppUser getSelectionSubMenuUser(String value){

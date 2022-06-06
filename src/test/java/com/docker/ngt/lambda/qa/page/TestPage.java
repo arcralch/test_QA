@@ -1,9 +1,9 @@
-package com.htc.ngt.lambda.qa.page;
+package com.docker.ngt.lambda.qa.page;
 
 import java.io.File;
 import java.util.List;
 
-import com.htc.ngt.lambda.qa.util.RandomInteger;
+import com.docker.ngt.lambda.qa.util.RandomInteger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -121,14 +121,18 @@ public abstract class TestPage{
                 ExpectedConditions.presenceOfElementLocated(element), ExpectedConditions.elementToBeSelected(element)));
     }
 
-    protected void waitForElement(By element){
-        this.waitForElement(element, this.MAX_TIME_WAIT);
+    protected void waitForElement(By element) {
+        WebDriverWait wait = new WebDriverWait(driver(), MAX_TIME_WAIT);
+        wait.until(ExpectedConditions.or(ExpectedConditions.elementToBeClickable(element),
+                ExpectedConditions.presenceOfElementLocated(element), ExpectedConditions.elementToBeSelected(element)));
     }
 
-    protected void waitElement(By by){
-        this.waitForElement(by, MAX_TIME_WAIT);
+    protected void waitElement(By by) {
+        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_WAIT);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
+    
     protected void waitIfElementVisible(By element, long timeOutInSeconds) throws InterruptedException {
         long i = VALUE;
         long iTime = VALUE;
@@ -191,5 +195,39 @@ public abstract class TestPage{
 
     protected void windowForScroll(int x, int y){
         executeScript("window.scrollBy("+ x +","+ y +")");
+    }
+
+    public By createBy(String typeSelector, String query) throws Exception {
+        By byObject = null;
+        switch (typeSelector) {
+            case "cssSelector":
+                byObject = new By.ByCssSelector(query);
+                break;
+            case "xpath":
+                byObject = new By.ByXPath(query);
+                break;
+            case "id":
+                byObject = new By.ById(query);
+                break;
+            case "className":
+                byObject = new By.ByClassName(query);
+                break;
+            case "name":
+                byObject = new By.ByName(query);
+                break;
+            case "linkText":
+                byObject = new By.ByLinkText(query);
+                break;
+            case "partialLinkText":
+                byObject = new By.ByPartialLinkText(query);
+                break;
+            case "tagName":
+                byObject = new By.ByTagName(query);
+                break;
+            default:
+                throw new Exception("Option is not available");
+        }
+
+        return byObject;
     }
 }

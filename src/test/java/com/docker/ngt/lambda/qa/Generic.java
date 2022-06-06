@@ -1,6 +1,6 @@
-package com.htc.ngt.lambda.qa;
+package com.docker.ngt.lambda.qa;
 
-import com.htc.ngt.lambda.qa.driver.Driver;
+import com.docker.ngt.lambda.qa.driver.Driver;
 import com.thoughtworks.gauge.Step;
 
 /**
@@ -12,4 +12,5 @@ public class Generic{
     public void takeScreenshot(){
         Driver.takePictureScreen();
     }
+    
 }
