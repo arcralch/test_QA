@@ -86,6 +86,7 @@ public class AppPage extends AngularPage {
 			 * action.moveToElement(button); click(button); break Click; } }
 			 */	
         });
+        wait(5);
         return this;
     }
 

@@ -16,9 +16,10 @@ RUN apt-get -f install
 #Install Gauge
 RUN curl -Ssl https://downloads.gauge.org/stable | sed 's/latest/15176631/g' | sh -s -- --location=/usr/sbin/
 RUN gauge telemetry off
-RUN gauge install java --version 0.7.1
+RUN gauge install java
 RUN gauge install json-report
-RUN gauge install html-report --version 4.0.6
+RUN gauge install html-report
+RUN gauge install screenshot
 
 #Install Chrome
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
