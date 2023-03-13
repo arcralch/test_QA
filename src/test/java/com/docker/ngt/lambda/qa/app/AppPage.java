@@ -38,7 +38,7 @@ public class AppPage extends AngularPage {
         LOGOAPP = createBy(System.getenv("BY_XPATH"), System.getenv("LBL_LOGOAPP"));
         LOGINAPP = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_SIGNIN"));
         USERNAME = createBy(System.getenv("BY_XPATH"), System.getenv("LBL_USERNAME"));
-        LOGOUT = createBy(System.getenv("BY_ID"), System.getenv("LBL_LOGOUT"));
+        LOGOUT = createBy(System.getenv("BY_XPATH"), System.getenv("LBL_LOGOUT"));
 
         TABEXPLORE = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_EXPLORE"));
         TABREPOSITORIES = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_REPOSITORIES"));

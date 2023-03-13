@@ -1,8 +1,8 @@
 package com.docker.ngt.lambda.qa.page;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import com.docker.ngt.lambda.qa.util.SearchResult;
 import com.paulhammant.ngwebdriver.ByAngular;
@@ -38,7 +38,7 @@ public abstract class AngularPage extends TestPage {
     }
 
     protected void waitForAngular(int secondsTimeout){
-        driver().manage().timeouts().setScriptTimeout(secondsTimeout, TimeUnit.SECONDS);
+        driver().manage().timeouts().scriptTimeout(Duration.ofSeconds(secondsTimeout));
         ngWebDriver.waitForAngularRequestsToFinish();
     }
 

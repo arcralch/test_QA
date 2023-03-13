@@ -1,6 +1,7 @@
 package com.docker.ngt.lambda.qa.page;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.List;
 
 import com.docker.ngt.lambda.qa.util.RandomInteger;
@@ -116,19 +117,19 @@ public abstract class TestPage{
     }
 
     protected void waitForElement(By element, long timeOutInSeconds){
-        WebDriverWait wait = new WebDriverWait(driver(), timeOutInSeconds);
+        WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(timeOutInSeconds));
         wait.until(ExpectedConditions.or(ExpectedConditions.elementToBeClickable(element),
                 ExpectedConditions.presenceOfElementLocated(element), ExpectedConditions.elementToBeSelected(element)));
     }
 
     protected void waitForElement(By element) {
-        WebDriverWait wait = new WebDriverWait(driver(), MAX_TIME_WAIT);
+        WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(MAX_TIME_WAIT));
         wait.until(ExpectedConditions.or(ExpectedConditions.elementToBeClickable(element),
                 ExpectedConditions.presenceOfElementLocated(element), ExpectedConditions.elementToBeSelected(element)));
     }
 
     protected void waitElement(By by) {
-        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_WAIT);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAX_TIME_WAIT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 

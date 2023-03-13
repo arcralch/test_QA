@@ -57,7 +57,6 @@ public class AppUser extends AngularPage {
 			List<WebElement> inputs = els(By.xpath("//input[@name='" + field + "']"));       
             for (WebElement input : inputs) {
 				if (input.isDisplayed()) {
-                    click(input);
                     input.clear();
 					input.sendKeys(value);
 					break;
