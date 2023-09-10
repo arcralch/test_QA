@@ -23,7 +23,7 @@ public class AppPage extends AngularPage {
     private static final int FIELD = 0;
 	private static final int VALUE = 1;
 
-    private static By LOGOAPP, LOGINAPP, USERNAME, LOGOUT, TABEXPLORE, TABREPOSITORIES, TABORGANIZATIONS, TABGETHELP, BTNCONTINUE;
+    private static By LOGOAPP, LOGINAPP, USERNAME, LOGOUT, TABEXPLORE, TABREPOSITORIES, TABORGANIZATIONS, TABGETHELP;
 
     
 
@@ -38,7 +38,6 @@ public class AppPage extends AngularPage {
         TABREPOSITORIES = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_REPOSITORIES"));
         TABORGANIZATIONS = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_ORGANIZATIONS"));
         TABGETHELP = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_GETHELP"));
-        BTNCONTINUE = createBy(System.getenv("BY_XPATH"), System.getenv("BTN_CONTINUE"));
         return this;
     }
 
