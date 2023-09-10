@@ -17,13 +17,13 @@ public class AppExplore extends AngularPage {
 
     public AppExplore init() throws Exception{
         TXTSEARCH = createBy(System.getenv("BY_XPATH"), System.getenv("TXT_SEARCH"));
-        TXTLINKTITLE = createBy(System.getenv("BY_CLASSNAME"), System.getenv("TXT_LINKTITLE"));
         return this;
     }
 
     public AppExplore getSearchRepositorios(String value){
         waitForElement(TXTSEARCH);
         type(TXTSEARCH, value);
+        wait(TIME_WAIT);
         Actions action = new Actions(driver());
         action.sendKeys(Keys.ENTER).build().perform();
         wait(TIME_WAIT);
