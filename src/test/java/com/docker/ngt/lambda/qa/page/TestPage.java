@@ -1,6 +1,7 @@
 package com.docker.ngt.lambda.qa.page;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.List;
 
 import com.docker.ngt.lambda.qa.util.RandomInteger;
@@ -12,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
@@ -69,6 +71,7 @@ public abstract class TestPage{
     }
 
     protected void click(By by){
+        waitElement(by);
         el(by).click();
     }
 
@@ -115,24 +118,23 @@ public abstract class TestPage{
         return lstElements.get(RandomInteger.getRandomNumberInRange(1, lstElements.size() -1)).getText();
     }
 
-    protected void waitForElement(By element, long timeOutInSeconds){
-        WebDriverWait wait = new WebDriverWait(driver(), timeOutInSeconds);
+    protected void waitForElement(By element, Integer timeOutInSeconds){
+        WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(timeOutInSeconds));
         wait.until(ExpectedConditions.or(ExpectedConditions.elementToBeClickable(element),
                 ExpectedConditions.presenceOfElementLocated(element), ExpectedConditions.elementToBeSelected(element)));
     }
 
     protected void waitForElement(By element) {
-        WebDriverWait wait = new WebDriverWait(driver(), MAX_TIME_WAIT);
+        WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(MAX_TIME_WAIT));
         wait.until(ExpectedConditions.or(ExpectedConditions.elementToBeClickable(element),
                 ExpectedConditions.presenceOfElementLocated(element), ExpectedConditions.elementToBeSelected(element)));
     }
 
     protected void waitElement(By by) {
-        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_WAIT);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAX_TIME_WAIT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
-    
     protected void waitIfElementVisible(By element, long timeOutInSeconds) throws InterruptedException {
         long i = VALUE;
         long iTime = VALUE;

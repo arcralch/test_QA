@@ -23,14 +23,8 @@ public class AppPage extends AngularPage {
     private static final int FIELD = 0;
 	private static final int VALUE = 1;
 
-    private static By LOGOAPP;
-    private static By LOGINAPP;
-    private static By USERNAME;
-    private static By LOGOUT;
-    private static By TABEXPLORE;
-    private static By TABREPOSITORIES;
-    private static By TABORGANIZATIONS;
-    private static By TABGETHELP;
+    private static By LOGOAPP, LOGINAPP, USERNAME, LOGOUT, TABEXPLORE, TABREPOSITORIES, TABORGANIZATIONS, TABGETHELP, BTNCONTINUE;
+
     
 
     public AppPage init() throws Exception,IOException {
@@ -38,12 +32,13 @@ public class AppPage extends AngularPage {
         LOGOAPP = createBy(System.getenv("BY_XPATH"), System.getenv("LBL_LOGOAPP"));
         LOGINAPP = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_SIGNIN"));
         USERNAME = createBy(System.getenv("BY_XPATH"), System.getenv("LBL_USERNAME"));
-        LOGOUT = createBy(System.getenv("BY_ID"), System.getenv("LBL_LOGOUT"));
+        LOGOUT = createBy(System.getenv("BY_XPATH"), System.getenv("LBL_LOGOUT"));
 
         TABEXPLORE = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_EXPLORE"));
         TABREPOSITORIES = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_REPOSITORIES"));
         TABORGANIZATIONS = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_ORGANIZATIONS"));
         TABGETHELP = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_GETHELP"));
+        BTNCONTINUE = createBy(System.getenv("BY_XPATH"), System.getenv("BTN_CONTINUE"));
         return this;
     }
 
@@ -75,8 +70,8 @@ public class AppPage extends AngularPage {
 					input.sendKeys(value);
                     Actions action = new Actions(driver());
                     action.sendKeys(Keys.ENTER).build().perform();
-					break;
 				}
+                wait(5);
 			}
             
 			/*

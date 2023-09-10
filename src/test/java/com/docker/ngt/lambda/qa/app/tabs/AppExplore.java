@@ -8,8 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class AppExplore extends AngularPage {
-    private static By TXTSEARCH;
-    private static By TXTLINKTITLE;
+    private static By TXTSEARCH, TXTLINKTITLE;
     private static final Integer TIME_WAIT = 5;
 
     public AppExplore(WebDriver driver) {
@@ -29,7 +28,7 @@ public class AppExplore extends AngularPage {
         action.sendKeys(Keys.ENTER).build().perform();
         wait(TIME_WAIT);
         click(By.xpath("//div[text()='"+value+"']"));
-        waitForElement(TXTLINKTITLE, this.MAX_TIME_WAIT);
+        waitForElement(TXTLINKTITLE, MAX_TIME_WAIT);
         return this;
     }
 }

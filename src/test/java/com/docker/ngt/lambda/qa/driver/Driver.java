@@ -1,7 +1,6 @@
 package com.docker.ngt.lambda.qa.driver;
 
-import java.util.concurrent.TimeUnit;
-
+import java.time.Duration;
 import com.thoughtworks.gauge.AfterSuite;
 import com.thoughtworks.gauge.BeforeSuite;
 import com.thoughtworks.gauge.Gauge;
@@ -43,8 +42,8 @@ public class Driver {
 			if(System.getenv("BROWSER").equals("firefox")){
 				final FirefoxOptions firefoxOptions = new FirefoxOptions();
 				WebDriverManager.firefoxdriver().setup();
-				firefoxOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-				firefoxOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+				//firefoxOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+				//firefoxOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
 				boolean headless = Boolean.valueOf(System.getenv("HEADLESS"));
 				// All
 				
@@ -62,11 +61,11 @@ public class Driver {
 			}else{
 				final ChromeOptions chromeOptions = new ChromeOptions();
 				WebDriverManager.chromedriver().setup();
-				chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+				//chromeOptions.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				chromeOptions.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+				chromeOptions.addArguments("--remote-allow-origins=*");
 				boolean headless = Boolean.valueOf(System.getenv("HEADLESS"));
 				// All
-				
 				if (headless) {
 					chromeOptions.addArguments("headless", "window-size=1200,600");
 					chromeOptions.addArguments("no-sandbox");
@@ -77,7 +76,9 @@ public class Driver {
 					chromeOptions.addArguments("--start-maximized");
 					webDriver = new ChromeDriver(chromeOptions);
 				}
-				webDriver.manage().timeouts().pageLoadTimeout(Long.valueOf(System.getenv("MAX_TIME_LOAD_PAGE_TIMEOUT")), TimeUnit.SECONDS);
+				webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Long.valueOf(System.getenv("MAX_TIME_LOAD_PAGE_TIMEOUT")))); 
+				webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Long.valueOf(System.getenv("MAX_TIME_LOAD_PAGE_TIMEOUT"))));
+				webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(Long.valueOf(System.getenv("MAX_TIME_LOAD_PAGE_TIMEOUT"))));
 				webDriver.manage().deleteAllCookies();
 			}
 			
