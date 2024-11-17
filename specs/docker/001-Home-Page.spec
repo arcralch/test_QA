@@ -3,10 +3,10 @@
 
 ##Navegation for Page
 *Login in APP
-    |FIELD          | Value         |
-    |---------------|---------------|
-    |username       |htcqa          |
-    |password       |Hightech2020   |
+    |FIELD         | Value         |
+    |--------------|---------------|
+    |username      |htcqa          |
+    |password      |Hightech2020   |
 *take screenshot
 ____________________
 Teardown steps
