@@ -113,7 +113,6 @@ public class Driver {
 	
 		if (remote) {
 			chromeOptions.addArguments("--incognito", "--disable-dev-shm-usage");
-			System.out.println("ruta web "+remoteUrl);
 			return new RemoteWebDriver(new URL(remoteUrl), chromeOptions);
 		} else {
 			return new ChromeDriver(chromeOptions);
