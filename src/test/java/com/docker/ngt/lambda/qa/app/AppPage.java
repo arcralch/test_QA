@@ -72,13 +72,6 @@ public class AppPage extends AngularPage {
 				}
                 wait(5);
 			}
-            
-			/*
-			 * List<WebElement> buttons =
-			 * driver().findElements(By.xpath("//*[contains(@type, 'button')]")); Click: for
-			 * (WebElement button : buttons) { if (button.isDisplayed()) {
-			 * action.moveToElement(button); click(button); break Click; } }
-			 */	
         });
         wait(5);
         return this;
