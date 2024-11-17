@@ -70,6 +70,7 @@ public abstract class TestPage{
     }
 
     protected void click(By by){
+        waitElement(by);
         el(by).click();
     }
 
@@ -116,7 +117,7 @@ public abstract class TestPage{
         return lstElements.get(RandomInteger.getRandomNumberInRange(1, lstElements.size() -1)).getText();
     }
 
-    protected void waitForElement(By element, long timeOutInSeconds){
+    protected void waitForElement(By element, Integer timeOutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(timeOutInSeconds));
         wait.until(ExpectedConditions.or(ExpectedConditions.elementToBeClickable(element),
                 ExpectedConditions.presenceOfElementLocated(element), ExpectedConditions.elementToBeSelected(element)));
@@ -133,7 +134,6 @@ public abstract class TestPage{
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
-    
     protected void waitIfElementVisible(By element, long timeOutInSeconds) throws InterruptedException {
         long i = VALUE;
         long iTime = VALUE;

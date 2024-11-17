@@ -23,14 +23,8 @@ public class AppPage extends AngularPage {
     private static final int FIELD = 0;
 	private static final int VALUE = 1;
 
-    private static By LOGOAPP;
-    private static By LOGINAPP;
-    private static By USERNAME;
-    private static By LOGOUT;
-    private static By TABEXPLORE;
-    private static By TABREPOSITORIES;
-    private static By TABORGANIZATIONS;
-    private static By TABGETHELP;
+    private static By LOGOAPP, LOGINAPP, USERNAME, LOGOUT, TABEXPLORE, TABREPOSITORIES, TABORGANIZATIONS, TABGETHELP;
+
     
 
     public AppPage init() throws Exception,IOException {
@@ -75,16 +69,9 @@ public class AppPage extends AngularPage {
 					input.sendKeys(value);
                     Actions action = new Actions(driver());
                     action.sendKeys(Keys.ENTER).build().perform();
-					break;
 				}
+                wait(5);
 			}
-            
-			/*
-			 * List<WebElement> buttons =
-			 * driver().findElements(By.xpath("//*[contains(@type, 'button')]")); Click: for
-			 * (WebElement button : buttons) { if (button.isDisplayed()) {
-			 * action.moveToElement(button); click(button); break Click; } }
-			 */	
         });
         wait(5);
         return this;
