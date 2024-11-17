@@ -1,6 +1,5 @@
 package com.docker.ngt.lambda.qa.app;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.docker.ngt.lambda.qa.app.tabs.AppExplore;
@@ -27,7 +26,7 @@ public class AppPage extends AngularPage {
 
     
 
-    public AppPage init() throws Exception,IOException {
+    public AppPage init() throws Exception{
         //loading selector from properties
         LOGOAPP = createBy(System.getenv("BY_XPATH"), System.getenv("LBL_LOGOAPP"));
         LOGINAPP = createBy(System.getenv("BY_XPATH"), System.getenv("TAB_SIGNIN"));
